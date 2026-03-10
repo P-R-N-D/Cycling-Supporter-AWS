@@ -1,79 +1,78 @@
 # Cycling Supporter AWS
-**Demonstration**: https://youtu.be/G39ZnHDm7jI
 
-Cycling Supporter AWS is a two-part project:
+> Full-stack cycling navigation platform with an Android client, a Java backend, and an AWS deployment architecture.
 
-- **Android client** in `android_app/android_studio`
-- **Java servlet web server** in `java_server/eclipse`
+## Overview
 
-## Repository Structure
+Cycling Supporter AWS is an end-to-end service project that combines a native Android application, a Java web backend, and a cloud deployment architecture for route-based cycling support.
+
+The project was built to connect mobile experience, backend processing, and cloud delivery in one coherent system. Rather than treating app development and infrastructure as separate exercises, this repository presents them as one product flow: client interaction, backend logic, deployment topology, and packaged artifacts.
+
+## Demo
+
+- Video demo: https://youtu.be/G39ZnHDm7jI
+
+## Architecture
+
+<p align="center">
+  <img src="architecture.svg" alt="Cycling Supporter AWS architecture diagram" width="1024" />
+</p>
+
+The repository includes the architecture diagram used to explain the overall service topology and deployment structure.
+
+## What this project covers
+
+- A mobile client for cycling-focused navigation workflows
+- A Java web backend for application-side processing
+- AWS-oriented service deployment design
+- Integration thinking across app, server, and infrastructure layers
+- Packaged deliverables for demonstration and deployment
+
+## Technical scope
+
+### Android client
+- Native Android application project
+- Gradle-based Android Studio structure
+- Mobile-side service interaction and route-oriented user flow
+- TMap API integration within the application stack
+
+### Backend
+- Java servlet-based web application
+- Eclipse dynamic web project structure
+- Web resources, server-side logic, and deployable WAR packaging
+- Tomcat-compatible deployment model
+
+### Cloud deployment
+- AWS deployment architecture for application delivery
+- Infrastructure components centered on scalable service exposure and managed hosting
+- Cloud distribution and certificate-based delivery setup
+- Database-backed backend service topology
+- Container-aware deployment thinking
+
+## Technology stack
+
+- Android Studio
+- Java
+- Servlet / JSP
+- Apache Tomcat
+- AWS
+- Elastic Load Balancing
+- Elastic Beanstalk
+- RDS
+- CloudFront
+- ACM
+- Docker
+- TMap API
+
+## Repository structure
 
 ```text
 .
 ├── architecture.svg
 ├── android_app
 │   ├── android_studio
-│   │   ├── app
-│   │   │   ├── libs
-│   │   │   └── src
-│   │   │       ├── androidTest
-│   │   │       ├── main
-│   │   │       └── test
-│   │   ├── build.gradle
-│   │   ├── gradle
-│   │   │   └── wrapper
-│   │   ├── gradle.properties
-│   │   ├── gradlew
-│   │   ├── gradlew.bat
-│   │   └── settings.gradle
 │   └── app.apk
 ├── java_server
 │   ├── eclipse
-│   │   ├── WebContent
-│   │   │   ├── META-INF
-│   │   │   └── WEB-INF
-│   │   │       └── lib
-│   │   └── src
-│   │       └── beans
 │   └── image.war
 └── README.md
-```
-
-## Components
-
-### 1) Android App (`android_app/android_studio`)
-
-- Android application source code and resources.
-- Gradle wrapper and module configuration for Android Studio.
-- Includes legacy external dependency JAR (`app/libs/com.skt.Tmap.jar`).
-
-### 2) Java Server (`java_server/eclipse`)
-
-- Eclipse dynamic web project (Servlet + JSP based).
-- Java servlet sources are under `src/`.
-- Web resources and deployment descriptors are under `WebContent/`.
-
-## Artifacts Included in This Repository
-
-- `architecture.svg`: service architecture diagram.
-- `android_app/app.apk`: built Android application package.
-- `java_server/image.war`: built Java web application archive.
-
-## Quick Start
-
-### Android
-
-1. Open `android_app/android_studio` in Android Studio.
-2. Sync Gradle.
-3. Build and run the `app` module on an emulator or device.
-
-### Java Server
-
-1. Import `java_server/eclipse` as an Eclipse Dynamic Web Project.
-2. Deploy to an Apache Tomcat server.
-3. Access mapped endpoints defined in `WEB-INF/web.xml`.
-
-## Notes
-
-- This codebase is maintained with minimal behavioral changes to preserve the original implementation.
-- Generated intermediate outputs should not be committed.
