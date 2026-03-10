@@ -6,8 +6,6 @@ Cycling Supporter AWS is a two-part project:
 - **Android client** in `android_app/android_studio`
 - **Java servlet web server** in `java_server/eclipse`
 
-The repository preserves the original implementation while cleaning obvious generated artifacts and improving project readability.
-
 ## Repository Structure
 
 ```text
