@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_navigation_layout"
+            android:icon="@drawable/logo_icon"
+            android:title="자전거 경로 안내" />
+        <item
+            android:id="@+id/nav_speed_layout"
+            android:icon="@drawable/speed_icon"
+            android:title="실시간 주행 정보" />
+        <item
+            android:id="@+id/nav_record_layout"
+            android:icon="@drawable/record_icon"
+            android:title="주행 기록"
+            android:visible="false"/>
+        <item
+            android:id="@+id/nav_ranking_layout"
+            android:icon="@drawable/ranking_icon"
+            android:title="랭킹"
+            android:visible="false"/>
+        <item
+            android:id="@+id/nav_friend_layout"
+            android:icon="@drawable/friend_icon"
+            android:title="친구"
+            android:visible="false"/>
+        <item
+            android:id="@+id/nav_club_layout"
+            android:icon="@drawable/club_icon"
+            android:title="클럽"
+            android:visible="false"/>
+        <item
+            android:id="@+id/nav_login_layout"
+            android:icon="@drawable/club_icon"
+            android:title="로그인 · 회원가입" />
+        <item
+            android:id="@+id/nav_logout_layout"
+            android:icon="@drawable/club_icon"
+            android:title="로그아웃"
+            android:visible="false"/>
+
+    </group>
+
+</menu>

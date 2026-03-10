@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_weight="1"
+        android:textSize="25dp"
+        android:text="목적지 검색"
+        android:id="@+id/navigation_layout_textview_title" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_weight="1"
+        android:layout_gravity="center"
+        android:layout_below="@id/navigation_layout_textview_title"
+        android:id="@+id/navigation_layout_linearlayout_1">
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_weight="8"
+            android:id="@+id/navigation_layout_edittext_poi" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:text="검색"
+            android:id="@+id/navigation_layout_button_search" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="현위치"
+            android:id="@+id/navigation_layout_button_resetTmapView" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_weight="1"
+        android:layout_below="@id/navigation_layout_linearlayout_1"
+        android:id="@+id/navigation_layout_linearlayout_tmap"
+        android:layout_gravity="center" />
+
+</RelativeLayout>
