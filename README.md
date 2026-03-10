@@ -1,6 +1,8 @@
 # Cycling Supporter AWS
-
-Cycling Supporter AWS is a legacy two-part project:
+<p align="center"><img src="https://raw.githubusercontent.com/CyclingSupporter-Dev/Cycling-Supporter-AWS/82c4e89b7218c2e5bdce9dea69fb9853800c6f60/Architecture%20Diagram.svg" width="1024px"/>
+<p/>
+**Demonstration**: https://youtu.be/G39ZnHDm7jI
+Cycling Supporter AWS is a two-part project:
 
 - **Android client** in `android_app/android_studio`
 - **Java servlet web server** in `java_server/eclipse`
