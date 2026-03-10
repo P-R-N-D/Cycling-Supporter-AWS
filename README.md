@@ -1,5 +1,4 @@
 # Cycling Supporter AWS
-<p/>2019 KPU 클라우드 컴퓨팅 조별과제
 <p/>시연 영상: https://youtu.be/G39ZnHDm7jI
 <p align="center"><img src="https://raw.githubusercontent.com/CyclingSupporter-Dev/Cycling-Supporter-AWS/82c4e89b7218c2e5bdce9dea69fb9853800c6f60/Architecture%20Diagram.svg" width="1024px"/>
 <p/><b>Architecture Diagram.png, Architecture Diagram.svg</b>: 서비스 아키텍처 설계 다이어그램
