@@ -56,7 +56,7 @@ This project covers:
 │   └── assets
 │       └── architecture.svg
 ├── android
-│   ├── studio
+│   ├── android-studio
 │   └── app.apk
 ├── tomcat
 │   ├── eclipse
@@ -73,7 +73,7 @@ This project covers:
 ## Local Setup
 
 ### Android application
-1. Open `android/studio` in Android Studio.
+1. Open `android/android-studio` in Android Studio.
 2. Sync Gradle dependencies.
 3. Build and run the `app` module on an emulator or Android device.
 
