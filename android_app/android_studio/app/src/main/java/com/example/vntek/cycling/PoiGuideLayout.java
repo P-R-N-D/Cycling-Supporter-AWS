@@ -31,6 +31,7 @@ import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationResult;
+import com.google.android.gms.location.LocationServices;
 import com.skt.Tmap.TMapCircle;
 import com.skt.Tmap.TMapData;
 import com.skt.Tmap.TMapMarkerItem;
@@ -326,7 +327,7 @@ public class PoiGuideLayout extends Fragment {
 
         }
 
-        fusedLocationProviderClient=new FusedLocationProviderClient(getContext());
+        fusedLocationProviderClient= LocationServices.getFusedLocationProviderClient(getContext());
 
         locationRequest = new LocationRequest().setInterval(1000).setFastestInterval(1000).setSmallestDisplacement((float)0.5).setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
 
@@ -341,7 +342,7 @@ public class PoiGuideLayout extends Fragment {
     public void setTmap(){
 
         tMapView=new TMapView(getContext());
-        tMapView.setSKTMapApiKey( "36346d7e-03e8-4af6-b0a7-227289fcbedf" );
+        tMapView.setSKTMapApiKey(ApiConfig.tmapAppKey());
         tMapView.setLanguage(TMapView.LANGUAGE_KOREAN);
         tMapView.setHttpsMode(true);
 
@@ -469,11 +470,14 @@ public class PoiGuideLayout extends Fragment {
                     String county=splitAddress[1];
                     String village=splitAddress[2];
 
-                    String params="?appKey=36346d7e-03e8-4af6-b0a7-227289fcbedf&version=2&city=" + city + "&county=" + county + "&village=" + village;
+                    Map<String, String> weatherParams = new HashMap<>();
+                    weatherParams.put("city", city);
+                    weatherParams.put("county", county);
+                    weatherParams.put("village", village);
 
-                    Log.i("TAG", "Params: " + params);
+                    Log.i("TAG", "Params: " + weatherParams);
 
-                    StringRequest postRequest = new StringRequest(Request.Method.GET, "https://apis.openapi.sk.com/weather/current/minutely" + params,
+                    StringRequest postRequest = new StringRequest(Request.Method.GET, ApiConfig.endpoint("WeatherCurrent", weatherParams),
                             new Response.Listener<String>() {
 
                                 @Override
@@ -524,8 +528,10 @@ public class PoiGuideLayout extends Fragment {
                         @Override
                         public void onErrorResponse(VolleyError error) {
 
-                            textviewWeather.setText("날씨: [error " + error.networkResponse.statusCode + "]");
-                            textviewTemperature.setText("기온: [error " + error.networkResponse.statusCode + "]");
+                            String statusCode = error.networkResponse == null ? "network" : Integer.toString(error.networkResponse.statusCode);
+
+                            textviewWeather.setText("날씨: [error " + statusCode + "]");
+                            textviewTemperature.setText("기온: [error " + statusCode + "]");
 
                         }
 
@@ -558,7 +564,7 @@ public class PoiGuideLayout extends Fragment {
 
                     RequestQueue postQueue = Volley.newRequestQueue(getActivity());
 
-                    StringRequest postRequest = new StringRequest(Request.Method.POST, "https://android-api.cyclingsupporter.cf/SendLocation",
+                    StringRequest postRequest = new StringRequest(Request.Method.POST, ApiConfig.endpoint("SendLocation"),
                             new Response.Listener<String>() {
                                 @Override
                                 public void onResponse(String response) {

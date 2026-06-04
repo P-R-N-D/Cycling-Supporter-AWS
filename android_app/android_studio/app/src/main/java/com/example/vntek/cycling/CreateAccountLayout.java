@@ -133,7 +133,7 @@ public class CreateAccountLayout extends Fragment {
 
         RequestQueue postQueue = Volley.newRequestQueue(getActivity().getApplicationContext());
 
-        StringRequest postRequest = new StringRequest(Request.Method.POST, "https://android-api.cyclingsupporter.cf/AndroidRegister",
+        StringRequest postRequest = new StringRequest(Request.Method.POST, ApiConfig.endpoint("AndroidRegister"),
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {

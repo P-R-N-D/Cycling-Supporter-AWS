@@ -1,0 +1,8 @@
+# Copy this file to local.properties or provide the same names as CI environment variables.
+# Do not commit local.properties with real values.
+
+# Android Studio may also add this local-only value:
+# sdk.dir=C:\\Users\\User\\AppData\\Local\\Android\\Sdk
+
+API_BASE_URL=https://your-api.example.com
+TMAP_APP_KEY=replace-with-restricted-tmap-android-sdk-key

@@ -258,7 +258,7 @@ public class MainActivity extends AppCompatActivity
 
         RequestQueue postQueue = Volley.newRequestQueue(this.getApplicationContext());
 
-        StringRequest postRequest = new StringRequest(Request.Method.POST, "https://android-api.cyclingsupporter.cf/HttpsConnectionStatus",
+        StringRequest postRequest = new StringRequest(Request.Method.POST, ApiConfig.endpoint("HttpsConnectionStatus"),
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -274,7 +274,7 @@ public class MainActivity extends AppCompatActivity
 
                 if (error instanceof NetworkError) {
 
-                    Log.i("TAG", "checkConnectivityForLogin() in MainActivity: cannot connect to the URL https://android-api.cyclingsupporter.cf Network Error: " + error);
+                    Log.i("TAG", "checkConnectivityForLogin() in MainActivity: cannot connect to the URL " + ApiConfig.apiBaseUrl() + " Network Error: " + error);
 
                     Toast.makeText(getApplicationContext(), "인터넷에 연결할 수 없어요.", Toast.LENGTH_SHORT).show();
 
@@ -319,7 +319,7 @@ public class MainActivity extends AppCompatActivity
 
             RequestQueue postQueue = Volley.newRequestQueue(this.getApplicationContext());
 
-            StringRequest postRequest = new StringRequest(Request.Method.POST, "https://android-api.cyclingsupporter.cf/AndroidLogin",
+            StringRequest postRequest = new StringRequest(Request.Method.POST, ApiConfig.endpoint("AndroidLogin"),
                     new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
@@ -395,7 +395,7 @@ public class MainActivity extends AppCompatActivity
 
         RequestQueue postQueue = Volley.newRequestQueue(this.getApplicationContext());
 
-        StringRequest postRequest = new StringRequest(Request.Method.POST, "https://android-api.cyclingsupporter.cf/SessionToUserInfo",
+        StringRequest postRequest = new StringRequest(Request.Method.POST, ApiConfig.endpoint("SessionToUserInfo"),
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -463,12 +463,7 @@ public class MainActivity extends AppCompatActivity
 
             Log.v("TAG", "void requestPermission() in MainActivity: Your Android OS version is 6.0, or later.");
 
-            if (ContextCompat.checkSelfPermission(this, Manifest.permission.INTERNET) == PackageManager.PERMISSION_GRANTED
-                    && ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_NETWORK_STATE) == PackageManager.PERMISSION_GRANTED
-                    && ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_WIFI_STATE) == PackageManager.PERMISSION_GRANTED
-                    && ContextCompat.checkSelfPermission(this, Manifest.permission.BLUETOOTH) == PackageManager.PERMISSION_GRANTED
-                    && ContextCompat.checkSelfPermission(this, Manifest.permission.BLUETOOTH_ADMIN) == PackageManager.PERMISSION_GRANTED
-                    && ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED
                     && ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED){
 
                 Log.i("TAG", "void requestPermission() in MainActivity: All necessary permissions are granted");
@@ -479,11 +474,6 @@ public class MainActivity extends AppCompatActivity
                 String[] permissions = new String[]
                         {
 
-                                Manifest.permission.INTERNET,
-                                Manifest.permission.ACCESS_NETWORK_STATE,
-                                Manifest.permission.ACCESS_WIFI_STATE,
-                                Manifest.permission.BLUETOOTH,
-                                Manifest.permission.BLUETOOTH_ADMIN,
                                 Manifest.permission.ACCESS_COARSE_LOCATION,
                                 Manifest.permission.ACCESS_FINE_LOCATION
 
@@ -506,7 +496,9 @@ public class MainActivity extends AppCompatActivity
 
             case 0: {
 
-                if(grantResults.length == permissions.length) {
+                if(grantResults.length == permissions.length
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED
+                        && grantResults[1] == PackageManager.PERMISSION_GRANTED) {
 
                     Log.i("TAG", "void onRequestPermissionsResult() in MainActivity: All necesary permissions are granted");
 

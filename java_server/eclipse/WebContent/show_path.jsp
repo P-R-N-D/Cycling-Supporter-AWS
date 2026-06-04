@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="java.sql.*, java.util.*, beans.SQLSelect" %>
+<%@ page import="java.sql.*, java.util.*, beans.AppConfig, beans.SQLSelect" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,7 +20,7 @@ HTTP GET method is not permitted!
 return;
 }
 
-String record=(String)request.getParameter("path_record");
+String record=AppConfig.sqlIdentifier((String)request.getParameter("path_record"));
 
 String location="";
 
@@ -33,7 +33,7 @@ ArrayList<ArrayList<Object>> rs=null;
 
 try {
 
-	rs=SQLSelect.query(columns, "path_records", "`" + record +"`", "ORDER BY `time` ASC");
+	rs=SQLSelect.query(columns, "path_records", record, "ORDER BY `time` ASC");
 
 } catch (ClassNotFoundException | SQLException e) {
 
@@ -63,10 +63,17 @@ for(int i=0; i<rs.size(); i++)
 
 }
 
+String jqueryIntegrity=AppConfig.optionalEnv("JQUERY_SRI", "");
+String jqueryIntegrityAttribute="";
+if(jqueryIntegrity.isEmpty() == false){
+	jqueryIntegrityAttribute=" integrity='" + AppConfig.htmlAttribute(jqueryIntegrity) + "' crossorigin='anonymous'";
+}
+
+String roadMatchUrl=request.getContextPath() + "/RoadMatchToRoads";
 
 %>
-<script type='text/javascript' charset='utf-8' src='https://code.jquery.com/jquery-latest.min.js'></script>
-<script type='text/javascript' charset='utf-8' src='https://api2.sktelecom.com/tmap/js?version=1&format=javascript&appKey=36346d7e-03e8-4af6-b0a7-227289fcbedf'></script>
+<script type='text/javascript' charset='utf-8' src='<%= AppConfig.htmlAttribute(AppConfig.jqueryUrl()) %>'<%= jqueryIntegrityAttribute %>></script>
+<script type='text/javascript' charset='utf-8' src='<%= AppConfig.htmlAttribute(AppConfig.tmapJavascriptUrl()) %>'></script>
 <body>
 	<div id="map_div"></div>
 	<div id="map_div2"></div>
@@ -366,7 +373,7 @@ for(int i=0; i<rs.size(); i++)
    		* 로드 매칭 API 요청
    		*/
    		DrawLine.reqLoadApi = function( pointString, callback ) {
-   			var url = 'https://api2.sktelecom.com/tmap/road/matchToRoads?version=1&appKey=36346d7e-03e8-4af6-b0a7-227289fcbedf'; // 이동한 도로 찾기 api 요청 url입니다.
+			var url = '<%= AppConfig.javascriptString(roadMatchUrl) %>'; // 이동한 도로 찾기 api 요청 url입니다.
    			
    			$.ajax({
    			     type: 'POST',
