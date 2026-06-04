@@ -51,6 +51,26 @@
   </servlet-mapping>
   <servlet>
     <description></description>
+    <display-name>WeatherCurrent</display-name>
+    <servlet-name>WeatherCurrent</servlet-name>
+    <servlet-class>WeatherCurrent</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>WeatherCurrent</servlet-name>
+    <url-pattern>/WeatherCurrent</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>RoadMatchToRoads</display-name>
+    <servlet-name>RoadMatchToRoads</servlet-name>
+    <servlet-class>RoadMatchToRoads</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RoadMatchToRoads</servlet-name>
+    <url-pattern>/RoadMatchToRoads</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
     <display-name>SessionToUserInfo</display-name>
     <servlet-name>SessionToUserInfo</servlet-name>
     <servlet-class>SessionToUserInfo</servlet-class>

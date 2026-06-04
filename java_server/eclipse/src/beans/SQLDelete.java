@@ -7,9 +7,7 @@ public final class SQLDelete {
 	
 	private static void connect(String database) throws ClassNotFoundException, SQLException {
 		
-		Class.forName("com.mysql.cj.jdbc.Driver");
-		
-		SQLSession = DriverManager.getConnection("jdbc:mysql://sql.ccjb4squbrhs.ap-northeast-2.rds.amazonaws.com:3306/" + database + "?serverTimezone=Asia/Seoul", "root", "1Shot1Kill.");
+		SQLSession = SQL.connect(database);
 		
 	}
 	

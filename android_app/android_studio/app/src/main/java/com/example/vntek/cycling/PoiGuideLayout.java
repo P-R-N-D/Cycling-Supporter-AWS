@@ -341,7 +341,7 @@ public class PoiGuideLayout extends Fragment {
     public void setTmap(){
 
         tMapView=new TMapView(getContext());
-        tMapView.setSKTMapApiKey( "36346d7e-03e8-4af6-b0a7-227289fcbedf" );
+        tMapView.setSKTMapApiKey(ApiConfig.tmapAppKey());
         tMapView.setLanguage(TMapView.LANGUAGE_KOREAN);
         tMapView.setHttpsMode(true);
 
@@ -469,11 +469,14 @@ public class PoiGuideLayout extends Fragment {
                     String county=splitAddress[1];
                     String village=splitAddress[2];
 
-                    String params="?appKey=36346d7e-03e8-4af6-b0a7-227289fcbedf&version=2&city=" + city + "&county=" + county + "&village=" + village;
+                    Map<String, String> weatherParams = new HashMap<>();
+                    weatherParams.put("city", city);
+                    weatherParams.put("county", county);
+                    weatherParams.put("village", village);
 
-                    Log.i("TAG", "Params: " + params);
+                    Log.i("TAG", "Params: " + weatherParams);
 
-                    StringRequest postRequest = new StringRequest(Request.Method.GET, "https://apis.openapi.sk.com/weather/current/minutely" + params,
+                    StringRequest postRequest = new StringRequest(Request.Method.GET, ApiConfig.endpoint("WeatherCurrent", weatherParams),
                             new Response.Listener<String>() {
 
                                 @Override
@@ -558,7 +561,7 @@ public class PoiGuideLayout extends Fragment {
 
                     RequestQueue postQueue = Volley.newRequestQueue(getActivity());
 
-                    StringRequest postRequest = new StringRequest(Request.Method.POST, "https://android-api.cyclingsupporter.cf/SendLocation",
+                    StringRequest postRequest = new StringRequest(Request.Method.POST, ApiConfig.endpoint("SendLocation"),
                             new Response.Listener<String>() {
                                 @Override
                                 public void onResponse(String response) {

@@ -79,7 +79,7 @@ public class LoginLayout extends Fragment {
 
                 RequestQueue postQueue = Volley.newRequestQueue(getActivity().getApplicationContext());
 
-                StringRequest postRequest = new StringRequest(Request.Method.POST, "https://android-api.cyclingsupporter.cf/AndroidLogin",
+                StringRequest postRequest = new StringRequest(Request.Method.POST, ApiConfig.endpoint("AndroidLogin"),
                         new Response.Listener<String>() {
                             @Override
                             public void onResponse(String response) {

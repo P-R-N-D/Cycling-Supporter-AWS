@@ -145,7 +145,7 @@ public class NavigationLayout extends Fragment {
     public void setTmap(){
 
         tMapView=new TMapView(getContext());
-        tMapView.setSKTMapApiKey( "36346d7e-03e8-4af6-b0a7-227289fcbedf" );
+        tMapView.setSKTMapApiKey(ApiConfig.tmapAppKey());
         tMapView.setLanguage(TMapView.LANGUAGE_KOREAN);
         tMapView.setHttpsMode(true);
 

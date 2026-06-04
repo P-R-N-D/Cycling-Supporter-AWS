@@ -43,7 +43,7 @@ public class RecordLayout extends Fragment {
 
         RequestQueue postQueue = Volley.newRequestQueue(getActivity().getApplicationContext());
 
-        StringRequest postRequest = new StringRequest(Request.Method.POST, "https://android-api.cyclingsupporter.cf/SessionToUserInfo",
+        StringRequest postRequest = new StringRequest(Request.Method.POST, ApiConfig.endpoint("SessionToUserInfo"),
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -56,7 +56,7 @@ public class RecordLayout extends Fragment {
 
                             String postParam="show_path_input_userid=" + URLEncoder.encode(json.optString("id"), "UTF-8");
 
-                            webView.postUrl("https://android-api.cyclingsupporter.cf/ShowPathInput",postParam.getBytes());
+                            webView.postUrl(ApiConfig.endpoint("ShowPathInput"),postParam.getBytes());
 
                         }
                         catch(JSONException e){

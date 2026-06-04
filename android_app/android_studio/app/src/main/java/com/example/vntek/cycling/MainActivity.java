@@ -258,7 +258,7 @@ public class MainActivity extends AppCompatActivity
 
         RequestQueue postQueue = Volley.newRequestQueue(this.getApplicationContext());
 
-        StringRequest postRequest = new StringRequest(Request.Method.POST, "https://android-api.cyclingsupporter.cf/HttpsConnectionStatus",
+        StringRequest postRequest = new StringRequest(Request.Method.POST, ApiConfig.endpoint("HttpsConnectionStatus"),
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -274,7 +274,7 @@ public class MainActivity extends AppCompatActivity
 
                 if (error instanceof NetworkError) {
 
-                    Log.i("TAG", "checkConnectivityForLogin() in MainActivity: cannot connect to the URL https://android-api.cyclingsupporter.cf Network Error: " + error);
+                    Log.i("TAG", "checkConnectivityForLogin() in MainActivity: cannot connect to the URL " + ApiConfig.apiBaseUrl() + " Network Error: " + error);
 
                     Toast.makeText(getApplicationContext(), "인터넷에 연결할 수 없어요.", Toast.LENGTH_SHORT).show();
 
@@ -319,7 +319,7 @@ public class MainActivity extends AppCompatActivity
 
             RequestQueue postQueue = Volley.newRequestQueue(this.getApplicationContext());
 
-            StringRequest postRequest = new StringRequest(Request.Method.POST, "https://android-api.cyclingsupporter.cf/AndroidLogin",
+            StringRequest postRequest = new StringRequest(Request.Method.POST, ApiConfig.endpoint("AndroidLogin"),
                     new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
@@ -395,7 +395,7 @@ public class MainActivity extends AppCompatActivity
 
         RequestQueue postQueue = Volley.newRequestQueue(this.getApplicationContext());
 
-        StringRequest postRequest = new StringRequest(Request.Method.POST, "https://android-api.cyclingsupporter.cf/SessionToUserInfo",
+        StringRequest postRequest = new StringRequest(Request.Method.POST, ApiConfig.endpoint("SessionToUserInfo"),
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
