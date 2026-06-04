@@ -27,14 +27,6 @@
 
 ---
 
-## Overview
-
-Cycling-Supporter-AWS is a repository for Cycling Supporter, a full-stack cycling navigation project. It contains an Android mobile app, a Java Servlet/JSP backend, MySQL-oriented data flow, AWS-oriented deployment material, and portfolio-level embedded device integration scope.
-
-The detailed README files explain the project architecture, ride record flow, data model, deployment structure, demonstration scope, and modernization areas.
-
----
-
 ## License
 
 This repository is provided for project and portfolio presentation purposes. Review the repository contents and included artifacts before reuse or redistribution.
