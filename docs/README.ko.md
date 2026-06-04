@@ -14,7 +14,7 @@ Cycling Supporter는 자전거 주행 중 필요한 경로 탐색, 현재 위치
 
 ## 데모
 
-- Video demo: https://youtu.be/G39ZnHDm7jI
+- 시연 영상: https://youtu.be/G39ZnHDm7jI
 - 기술 문서: [Cycling-Supporter-AWS Technical Documentation](https://prnd-kimjeseok.notion.site/Cycling-Supporter-AWS-375602ff0db1817cb5a5f84d1fae4eec)
 
 ---
