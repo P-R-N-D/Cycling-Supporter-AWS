@@ -15,6 +15,7 @@ This repository is not only a collection of Android screens. It focuses on how u
 ## Demo
 
 - Video demo: https://youtu.be/G39ZnHDm7jI
+- Technical documentation: [Cycling-Supporter-AWS Technical Documentation](https://prnd-kimjeseok.notion.site/Cycling-Supporter-AWS-375602ff0db1817cb5a5f84d1fae4eec)
 
 ---
 
