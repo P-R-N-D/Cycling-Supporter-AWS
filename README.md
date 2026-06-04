@@ -55,30 +55,30 @@ This project covers:
 ├── docs
 │   └── assets
 │       └── architecture.svg
-├── android_app
-│   ├── android_studio
+├── android
+│   ├── studio
 │   └── app.apk
-├── java_server
+├── tomcat
 │   ├── eclipse
-│   └── image.war
+│   └── server.war
 └── README.md
 ```
 
 ## Included Artifacts
 
 - `docs/assets/architecture.svg` — service architecture diagram
-- `android_app/app.apk` — packaged Android application
-- `java_server/image.war` — packaged Java web application
+- `android/app.apk` — packaged Android application
+- `tomcat/server.war` — packaged Java web application
 
 ## Local Setup
 
 ### Android application
-1. Open `android_app/android_studio` in Android Studio.
+1. Open `android/studio` in Android Studio.
 2. Sync Gradle dependencies.
 3. Build and run the `app` module on an emulator or Android device.
 
 ### Java backend
-1. Import `java_server/eclipse` into Eclipse as a Dynamic Web Project.
+1. Import `tomcat/eclipse` into Eclipse as a Dynamic Web Project.
 2. Configure Apache Tomcat.
 3. Deploy the backend project to Tomcat.
 4. Update environment-specific settings as needed.
