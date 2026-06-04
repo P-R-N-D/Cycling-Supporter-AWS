@@ -20,7 +20,7 @@ HTTP GET method is not permitted!
 return;
 }
 
-String record=(String)request.getParameter("path_record");
+String record=AppConfig.sqlIdentifier((String)request.getParameter("path_record"));
 
 String location="";
 
@@ -33,7 +33,7 @@ ArrayList<ArrayList<Object>> rs=null;
 
 try {
 
-	rs=SQLSelect.query(columns, "path_records", "`" + record +"`", "ORDER BY `time` ASC");
+	rs=SQLSelect.query(columns, "path_records", record, "ORDER BY `time` ASC");
 
 } catch (ClassNotFoundException | SQLException e) {
 

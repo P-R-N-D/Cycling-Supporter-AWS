@@ -75,6 +75,27 @@ public final class AppConfig {
 		return body.toString();
 	}
 
+	public static String sqlIdentifier(String value) {
+		if (value == null) {
+			throw new IllegalArgumentException("SQL identifier is required.");
+		}
+
+		String cleanValue = value.trim();
+		if (cleanValue.startsWith("`") && cleanValue.endsWith("`") && cleanValue.length() >= 2) {
+			cleanValue = cleanValue.substring(1, cleanValue.length() - 1);
+		}
+
+		if (cleanValue.matches("[A-Za-z0-9_]+") == false) {
+			throw new IllegalArgumentException("Invalid SQL identifier: " + value);
+		}
+
+		return cleanValue;
+	}
+
+	public static String quotedIdentifier(String value) {
+		return "`" + sqlIdentifier(value) + "`";
+	}
+
 	private static String requiredEnv(String name) {
 		String value = System.getenv(name);
 		if (value == null || value.trim().isEmpty()) {
@@ -127,11 +148,7 @@ public final class AppConfig {
 	}
 
 	private static String requireDatabaseName(String database) {
-		if (database == null || database.matches("[A-Za-z0-9_]+") == false) {
-			throw new IllegalArgumentException("Invalid database name: " + database);
-		}
-
-		return database;
+		return sqlIdentifier(database);
 	}
 
 	private static String urlEncode(String value) {

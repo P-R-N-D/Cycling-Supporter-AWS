@@ -25,7 +25,7 @@ public final class SQLDelete {
 		
 		connect(database);
 		
-		PreparedStatement statement=SQLSession.prepareStatement("DELETE from " + table + " " + conditions + ";");
+		PreparedStatement statement=SQLSession.prepareStatement("DELETE from " + AppConfig.quotedIdentifier(table) + " " + conditions + ";");
 		
 		result=statement.executeUpdate();
 		

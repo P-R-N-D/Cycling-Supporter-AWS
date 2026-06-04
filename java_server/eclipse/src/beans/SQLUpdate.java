@@ -26,7 +26,7 @@ public final class SQLUpdate {
 		
 		int result=-1;
 		
-		String query="UPDATE " + table + " set ";
+		String query="UPDATE " + AppConfig.quotedIdentifier(table) + " set ";
 		
 		if(columns.size() != values.size())
 		{

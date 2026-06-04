@@ -26,7 +26,7 @@ public final class SQLInsert {
 		
 		int result=-1;
 		
-		String query="INSERT INTO " + table + "(";
+		String query="INSERT INTO " + AppConfig.quotedIdentifier(table) + "(";
 		
 		for(int i=0; i < columns.size(); i++)
 		{

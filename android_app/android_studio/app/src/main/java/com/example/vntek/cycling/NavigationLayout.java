@@ -24,6 +24,7 @@ import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationResult;
+import com.google.android.gms.location.LocationServices;
 import com.skt.Tmap.TMapCircle;
 import com.skt.Tmap.TMapData;
 import com.skt.Tmap.TMapMarkerItem;
@@ -130,7 +131,7 @@ public class NavigationLayout extends Fragment {
         linearlayoutTmap=v.findViewById(R.id.navigation_layout_linearlayout_tmap);
         setTmap();
 
-        fusedLocationProviderClient=new FusedLocationProviderClient(getContext());
+        fusedLocationProviderClient= LocationServices.getFusedLocationProviderClient(getContext());
 
         locationRequest = new LocationRequest().setInterval(1000).setFastestInterval(1000).setSmallestDisplacement((float)0.5).setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
 

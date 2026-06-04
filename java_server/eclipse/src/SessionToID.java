@@ -9,14 +9,14 @@ public final class SessionToID {
 		
 		String result=null;
 		
-		if (SQLRows.query("users", "user_sessions", "where session=SHA2('" + session + "', 512)") == 1)
+		if (SQLRows.query("users", "user_sessions", "where session=SHA2(?, 512)", session) == 1)
 		{
 			
 			ArrayList<String> columns=new ArrayList<String>();
 			
 			columns.add("`id`");
 			
-			ArrayList<ArrayList<Object>> rs=SQLSelect.query(columns, "users", "user_sessions", "where session=SHA2('" + session + "', 512)");
+			ArrayList<ArrayList<Object>> rs=SQLSelect.query(columns, "users", "user_sessions", "where session=SHA2(?, 512)", session);
 			
 			result=(String)rs.get(0).get(0);
 			

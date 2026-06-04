@@ -29,6 +29,7 @@ import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationResult;
+import com.google.android.gms.location.LocationServices;
 import com.skt.Tmap.TMapCircle;
 import com.skt.Tmap.TMapData;
 import com.skt.Tmap.TMapPoint;
@@ -272,7 +273,7 @@ public class SpeedLayout extends Fragment {
 
         }
 
-        fusedLocationProviderClient=new FusedLocationProviderClient(getContext());
+        fusedLocationProviderClient= LocationServices.getFusedLocationProviderClient(getContext());
 
         locationRequest = new LocationRequest().setInterval(1000).setFastestInterval(1000).setSmallestDisplacement((float)0.5).setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
 
@@ -467,8 +468,10 @@ public class SpeedLayout extends Fragment {
                         @Override
                         public void onErrorResponse(VolleyError error) {
 
-                            textviewWeather.setText("날씨: [error " + error.networkResponse.statusCode + "]");
-                            textviewTemperature.setText("기온: [error " + error.networkResponse.statusCode + "]");
+                            String statusCode = error.networkResponse == null ? "network" : Integer.toString(error.networkResponse.statusCode);
+
+                            textviewWeather.setText("날씨: [error " + statusCode + "]");
+                            textviewTemperature.setText("기온: [error " + statusCode + "]");
 
                         }
 

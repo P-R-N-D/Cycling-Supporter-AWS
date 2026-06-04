@@ -5,141 +5,155 @@ import java.util.ArrayList;
 public final class SQLSelect {
 
 	private static Connection SQLSession=null;
-	
+
 	private static void connect(String database) throws ClassNotFoundException, SQLException {
-		
+
 		SQLSession = SQL.connect(database);
-		
+
 	}
-	
+
 	private static void disconnect() throws SQLException {
-		
+
 		SQLSession.close();
-		
+
 		SQLSession=null;
-		
+
 	}
-	
+
 	public static ArrayList<ArrayList<Object>> query(ArrayList<String> columns, String database, String table, String conditions) throws ClassNotFoundException, SQLException{
+		return query(columns, database, table, conditions, new Object[0]);
+	}
+
+	public static ArrayList<ArrayList<Object>> query(ArrayList<String> columns, String database, String table, String conditions, Object... parameters) throws ClassNotFoundException, SQLException{
 
 		connect(database);
-		
-		Statement statement=SQLSession.createStatement();
-		
+
 		String query="SELECT ";
-		
+
 		ArrayList<ArrayList<Object>> result=new ArrayList<ArrayList<Object>>();
-		
+
 		for(int i=0; i < columns.size(); i++)
 		{
-			
+
 			if(i>0)
 			{
-				
-				query += ", ";
-				
-			}
-			
-			query += columns.get(i);
-			
-		}
-		
-		query += (" from " + table + " " + conditions +";");
 
-		ResultSet rs = statement.executeQuery(query);
-		
+				query += ", ";
+
+			}
+
+			query += columns.get(i);
+
+		}
+
+		query += (" from " + AppConfig.quotedIdentifier(table) + " " + conditions +";");
+
+		PreparedStatement statement=SQLSession.prepareStatement(query);
+		bindParameters(statement, parameters);
+
+		ResultSet rs = statement.executeQuery();
+
 		if( rs == null || rs.isBeforeFirst() == false )
 		{
-			
+
 			result=null;
 
 		}
 		else
 		{
-			
+
 			while(rs.next())
 			{
-				
+
 				ArrayList<Object> rowTable=new ArrayList<Object>();
-				
+
 				for(int i=0; i < columns.size(); i++)
 				{
-					
+
 					rowTable.add(rs.getObject(i+1));
-					
+
 				}
-				
+
 				result.add(rowTable);
-				
+
 			}
-			
+
 		}
-		
+
 		disconnect();
-		
+
 		return result;
-		
+
 	}
-	
+
 	public static ArrayList<ArrayList<Object>> query(ArrayList<String> columns, String database, String table) throws ClassNotFoundException, SQLException{
 
 		connect(database);
-		
+
 		Statement statement=SQLSession.createStatement();
-		
+
 		String query="SELECT ";
-		
+
 		ArrayList<ArrayList<Object>> result=new ArrayList<ArrayList<Object>>();
-		
+
 		for(int i=0; i < columns.size(); i++)
 		{
-			
+
 			if(i>0)
 			{
-				
+
 				query += ", ";
-				
+
 			}
-			
+
 			query += columns.get(i);
-			
+
 		}
-		
-		query += (" from " + table +";");
+
+		query += (" from " + AppConfig.quotedIdentifier(table) +";");
 
 		ResultSet rs = statement.executeQuery(query);
-		
+
 		if( rs == null || rs.isBeforeFirst() == false )
 		{
-			
+
 			result=null;
 
 		}
 		else
 		{
-			
+
 			while(rs.next())
 			{
-				
+
 				ArrayList<Object> rowTable=new ArrayList<Object>();
-				
+
 				for(int i=0; i < columns.size(); i++)
 				{
-					
+
 					rowTable.add(rs.getObject(i+1));
-					
+
 				}
-				
+
 				result.add(rowTable);
-				
+
 			}
-			
+
 		}
-		
+
 		disconnect();
-		
+
 		return result;
-		
+
 	}
-	
+
+	private static void bindParameters(PreparedStatement statement, Object... parameters) throws SQLException {
+		for(int i=0; i < parameters.length; i++)
+		{
+
+			statement.setObject(i+1, parameters[i]);
+
+		}
+	}
+
 }

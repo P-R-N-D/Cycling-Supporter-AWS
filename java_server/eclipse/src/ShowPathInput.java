@@ -34,7 +34,7 @@ public class ShowPathInput extends HttpServlet {
 
 		try {
 
-			rs=SQLSelect.query(columns, "users", "user_path_records", "where `id`='" + show_path_input_userid + "' ORDER BY `time` ASC");
+			rs=SQLSelect.query(columns, "users", "user_path_records", "where `id`=? ORDER BY `time` ASC", show_path_input_userid);
 
 		} catch (ClassNotFoundException | SQLException e) {
 
@@ -57,11 +57,17 @@ public class ShowPathInput extends HttpServlet {
 		out.println("<form action='./show_path.jsp' method='post'><div align='center'>");
 		out.println("<select name='path_record'>");
 		
-		for(int i=0; i < rs.size(); i++)
+		if(rs != null)
 		{
-			
-			out.println("<option value='" + ((String) rs.get(i).get(0)) + "'>" + (String)rs.get(i).get(0) + "</option>");
-			
+
+			for(int i=0; i < rs.size(); i++)
+			{
+
+				String record=AppConfig.htmlAttribute((String) rs.get(i).get(0));
+				out.println("<option value='" + record + "'>" + record + "</option>");
+
+			}
+
 		}
 		
 		out.println("</select>");
