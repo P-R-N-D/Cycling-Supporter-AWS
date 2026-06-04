@@ -22,12 +22,59 @@ Cycling Supporter는 자전거 주행 중 필요한 경로 탐색, 현재 위치
 
 | 구분 | 사용 위치 | 역할 |
 |---|---|---|
-| `docs/assets/architecture.svg` | README 본문 | 전체 서비스와 AWS 지향 배포 구조를 한눈에 보여주는 대표 이미지 |
+| `docs/assets/architecture.svg` | 전체 서비스 구조 | 앱, 서버, DB, AWS 지향 배포 구조를 한눈에 보여주는 대표 이미지 |
+| `docs/assets/app_login.jpg` | 실행 화면 | 로그인·회원가입 등 앱 진입 흐름을 보여주는 화면 |
+| `docs/assets/app_navigate.png` | 실행 화면 | 경로 탐색과 목적지 기반 지도 안내 흐름을 보여주는 화면 |
+| `docs/assets/app_tracking.jpg` | 실행 화면 | 주행 상태, 위치 표시, 기록 관련 화면을 보여주는 화면 |
+| `docs/assets/server_log.png` | 서버 실행 확인 | 서버 요청 처리와 실행 로그를 보여주는 화면 |
+| `docs/assets/server_trace.png` | 서버 실행 확인 | backend 처리 흐름과 trace 성격의 실행 결과를 보여주는 화면 |
 | Mermaid diagram | README 본문 | 앱, 서버, 데이터 저장소, 주행 기록 흐름을 GitHub에서 바로 확인할 수 있는 구조도 |
 
 <p align="center">
   <img src="assets/architecture.svg" alt="Cycling Supporter architecture diagram" width="920">
 </p>
+
+---
+
+## 실행 및 시연 화면
+
+아래 이미지는 포트폴리오 자료와 저장소 자산을 기준으로 Cycling Supporter가 실제 앱 화면, 주행 흐름, 서버 실행 흐름을 갖는 프로젝트임을 보여줍니다. 이 화면들은 성능 수치를 주장하기 위한 자료가 아니라, 앱·서버·데이터 흐름이 연결되어 실행되는지를 보여주는 시연 자료입니다.
+
+### 모바일 앱 실행 화면
+
+<p align="center">
+  <img src="assets/app_login.jpg" alt="Cycling Supporter login and account screens" width="720">
+</p>
+
+로그인과 회원가입 화면은 사용자 인증 흐름의 진입점입니다. 로그인 이후 앱은 세션을 기준으로 사용자 정보 조회, 주행 기록 저장, 기록 조회 기능을 활성화합니다.
+
+### 경로 탐색 화면
+
+<p align="center">
+  <img src="assets/app_navigate.png" alt="Cycling Supporter route search and navigation screens" width="720">
+</p>
+
+경로 탐색 화면은 TMap 기반 POI 검색, 목적지 선택, 현재 위치와 목적지 사이의 경로 표시 흐름을 보여줍니다.
+
+### 주행 상태와 기록 화면
+
+<p align="center">
+  <img src="assets/app_tracking.jpg" alt="Cycling Supporter ride tracking and record screens" width="720">
+</p>
+
+주행 상태 화면은 현재 위치, 속도·방향 정보, 지도 표시, 주행 기록 전송 흐름과 연결됩니다. 저장된 좌표는 서버와 DB를 거쳐 다시 지도 시각화로 돌아옵니다.
+
+### 서버 실행 확인 화면
+
+<p align="center">
+  <img src="assets/server_log.png" alt="Cycling Supporter server log screen" width="720">
+</p>
+
+<p align="center">
+  <img src="assets/server_trace.png" alt="Cycling Supporter server trace screen" width="720">
+</p>
+
+서버 실행 화면은 Android 앱에서 발생한 요청이 Java/Tomcat backend에서 처리되는 흐름을 보여줍니다. 이 화면은 API 호출, 세션 처리, 주행 기록 저장·조회 흐름이 backend와 연결되어 있음을 확인하는 보조 자료입니다.
 
 ---
 
@@ -198,6 +245,11 @@ Cycling-Supporter-AWS/
     README.en.md
     assets/
       architecture.svg
+      app_login.jpg
+      app_navigate.png
+      app_tracking.jpg
+      server_log.png
+      server_trace.png
   android/
     android-studio/
     app.apk
