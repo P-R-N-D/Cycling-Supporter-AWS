@@ -15,7 +15,7 @@ The repository is intended to show how mobile interaction, backend processing, a
 ## Architecture
 
 <p align="center">
-  <img src="architecture.svg" alt="Cycling Supporter AWS architecture diagram" width="1024" />
+  <img src="docs/assets/architecture.svg" alt="Cycling Supporter AWS architecture diagram" width="1024" />
 </p>
 
 The repository includes the architecture diagram used to explain the overall service topology and deployment flow.
@@ -52,7 +52,9 @@ This project covers:
 
 ```text
 .
-├── architecture.svg
+├── docs
+│   └── assets
+│       └── architecture.svg
 ├── android_app
 │   ├── android_studio
 │   └── app.apk
@@ -64,7 +66,7 @@ This project covers:
 
 ## Included Artifacts
 
-- `architecture.svg` — service architecture diagram
+- `docs/assets/architecture.svg` — service architecture diagram
 - `android_app/app.apk` — packaged Android application
 - `java_server/image.war` — packaged Java web application
 
