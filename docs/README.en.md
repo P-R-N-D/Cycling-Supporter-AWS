@@ -20,16 +20,61 @@ This repository is not only a collection of Android screens. It focuses on how u
 
 ## Visual Assets and Diagrams
 
-This README uses two types of visual material.
-
 | Type | Location | Purpose |
 |---|---|---|
-| `docs/assets/architecture.svg` | README body | Main visual asset for the overall service and AWS-oriented deployment structure |
+| `docs/assets/architecture.svg` | Overall service structure | Main visual asset for the app, server, DB, and AWS-oriented deployment structure |
+| `docs/assets/app_login.jpg` | Execution screens | Shows login, account, and app entry flow |
+| `docs/assets/app_navigate.png` | Execution screens | Shows route search and destination-based map guidance flow |
+| `docs/assets/app_tracking.jpg` | Execution screens | Shows ride status, location display, and record-related screens |
+| `docs/assets/server_log.png` | Server execution evidence | Shows backend request handling and runtime logs |
+| `docs/assets/server_trace.png` | Server execution evidence | Shows backend processing and trace-style runtime result |
 | Mermaid diagrams | README body | GitHub-rendered diagrams for the app, server, data storage, and ride record flow |
 
 <p align="center">
   <img src="assets/architecture.svg" alt="Cycling Supporter architecture diagram" width="920">
 </p>
+
+---
+
+## Execution and Demonstration Screens
+
+The images below show that Cycling Supporter has an actual app flow, ride flow, and server-side execution flow. They are demonstration evidence for app-server-data integration, not performance benchmark claims.
+
+### Mobile App Execution
+
+<p align="center">
+  <img src="assets/app_login.jpg" alt="Cycling Supporter login and account screens" width="720">
+</p>
+
+The login and account screens are the entry point of the user authentication flow. After login, the app uses the session to enable user information lookup, ride record storage, and record retrieval.
+
+### Route Search
+
+<p align="center">
+  <img src="assets/app_navigate.png" alt="Cycling Supporter route search and navigation screens" width="720">
+</p>
+
+The route search screens show POI search, destination selection, and map-based route display using TMap.
+
+### Ride Status and Records
+
+<p align="center">
+  <img src="assets/app_tracking.jpg" alt="Cycling Supporter ride tracking and record screens" width="720">
+</p>
+
+The ride status screens connect current location, speed/bearing display, map display, and ride record submission. Stored coordinates pass through the server and database and return later as map visualization.
+
+### Server Execution Evidence
+
+<p align="center">
+  <img src="assets/server_log.png" alt="Cycling Supporter server log screen" width="720">
+</p>
+
+<p align="center">
+  <img src="assets/server_trace.png" alt="Cycling Supporter server trace screen" width="720">
+</p>
+
+The server execution screens show that requests from the Android app are handled by the Java/Tomcat backend. They support the authentication, session, ride record storage, and retrieval flows described in this document.
 
 ---
 
@@ -200,6 +245,11 @@ Cycling-Supporter-AWS/
     README.en.md
     assets/
       architecture.svg
+      app_login.jpg
+      app_navigate.png
+      app_tracking.jpg
+      server_log.png
+      server_trace.png
   android/
     android-studio/
     app.apk
