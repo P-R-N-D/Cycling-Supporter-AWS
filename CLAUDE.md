@@ -1,3 +1,5 @@
+@docs/CONTEXT.md
+
 # Claude Instructions
 
 Read `docs/CONTEXT.md` first. It is the canonical AI-facing source of truth for this repository.
