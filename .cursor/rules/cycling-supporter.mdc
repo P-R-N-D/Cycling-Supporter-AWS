@@ -1,0 +1,10 @@
+---
+description: Cycling Supporter AWS AI-agent bridge rules
+alwaysApply: true
+---
+
+Read `docs/CONTEXT.md` first. It is the canonical AI-facing source of truth for this repository.
+
+Keep this Cursor rule thin. Shared guardrails and status labels belong in `docs/CONTEXT.md`.
+
+Before completing any task, apply the Mandatory AI documentation sync rule in `docs/CONTEXT.md`.
